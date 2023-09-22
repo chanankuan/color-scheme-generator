@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1c1c1c;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  width: 550px;
+  height: 550px;
+  /* border: 1px solid red; */
+}
+
+.form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+  background-color: #ffffff;
+  padding: 0 15px;
+}
+
+.input-picker {
+  width: 61px;
+  height: 42px;
+  border: 0.5px solid #d1d5db;
+  background-color: #e5e5e5;
+  cursor: pointer;
+}
+
+.input-picker::-webkit-color-swatch {
+  padding: 4px 5px;
+  border: 0.5px solid #313131;
+}
+
+.scheme-mode {
+  width: 312px;
+  height: 42px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  padding-left: 13px;
+  padding-right: 13px;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url('./images/Selector.svg') center right 13px no-repeat;
+
+  color: #111827;
+  line-height: 150%;
+}
+
+.scheme-mode option {
+  font-size: 16px;
+  color: #111827;
+  line-height: 150%;
+}
+
+.scheme-mode option:selected {
+  font-weight: 600;
+}
+
+.header button {
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: #374151;
+
+  padding: 13px 11px;
+  border-radius: 4px;
+  border: 1px solid var(--gray-300, #d1d5db);
+  background: var(--white, #fff);
+  cursor: pointer;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+
+  list-style: none;
+}
+
+.content {
+  height: 100%;
+}
+
+.content > .list {
+  height: inherit;
+}
+
+.footer {
+  /* margin-top: auto; */
+}
+
+.color-code {
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFFFFF;
+
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 200%;
+}
