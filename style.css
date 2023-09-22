@@ -18,10 +18,10 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  justify-content:space-between;
+  justify-content: space-between;
   width: 550px;
   height: 550px;
-  /* border: 1px solid red; */
+  border-radius: 10px;
 }
 
 .form {
@@ -31,6 +31,8 @@ body {
   height: 90px;
   background-color: #ffffff;
   padding: 0 15px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .input-picker {
@@ -91,33 +93,42 @@ body {
   cursor: pointer;
 }
 
-.list {
+.content {
+  flex-grow: 1;
+}
+
+.content-list {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  height: 100%;
 
   list-style: none;
 }
 
-.content {
-  height: 100%;
-}
-
-.content > .list {
-  height: inherit;
-}
-
-.footer {
-  /* margin-top: auto; */
+.content-list-item {
+  position: relative;
 }
 
 .color-code {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   height: 46px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 
   font-size: 12px;
   font-weight: 500;
   line-height: 200%;
+}
+
+.content-list-item:first-child,
+.content-list-item:first-child > .color-code {
+  border-bottom-left-radius: 10px;
+}
+
+.content-list-item:last-child,
+.content-list-item:last-child > .color-code {
+  border-bottom-right-radius: 10px;
 }
