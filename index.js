@@ -1,17 +1,24 @@
 const form = document.querySelector('.form');
-const colorBoxes = document.querySelectorAll('.list > .color');
-const colorTextBoxes = document.querySelectorAll('.list > .color-code');
+const palette = document.querySelector('.content-list');
 const defaultColors = ['#F55A5A', '#2B283A', '#FBF3AB', '#AAD1B6', '#A626D3'];
 
-displayInfo(defaultColors);
+renderColorPalette(defaultColors);
 
 form.addEventListener('submit', handleSubmit);
 
-function displayInfo(array) {
-  array.forEach((color, i) => {
-    colorBoxes[i].style.backgroundColor = color;
-    colorTextBoxes[i].textContent = color;
-  });
+function renderColorPalette(colors) {
+  const markup = colors
+    .map((color, i) => {
+      return `
+      <li class="content-list-item" style="background-color: ${color}">
+        <div class="color-code">${color}</div>
+      </li>
+    `;
+    })
+    .join('');
+
+  palette.style.gridTemplateColumns = `repeat(${colors.length}, 1fr)`;
+  palette.innerHTML = markup;
 }
 
 async function handleSubmit(event) {
@@ -26,7 +33,7 @@ async function handleSubmit(event) {
   const colorObj = await getColors(url);
   const colors = colorObj.map((color) => color.hex.value);
 
-  displayInfo(colors);
+  renderColorPalette(colors);
 }
 
 function setUrl(obj) {
@@ -38,9 +45,7 @@ function setUrl(obj) {
     count: obj.count || 5,
   };
 
-  return `${data.baseURL}${data.endpoint}?hex=${data.color}&mode=${
-    data.mode
-  }&count=${data.count}`;
+  return `${data.baseURL}${data.endpoint}?hex=${data.color}&mode=${data.mode}&count=${data.count}`;
 }
 
 async function getColors(url) {
@@ -48,7 +53,6 @@ async function getColors(url) {
   const data = await response.json();
   return data.colors;
 }
-
 
 // https://www.thecolorapi.com/docs#schemes
 // /scheme?hex=24B1E0&mode=triad&count=6
